@@ -1,0 +1,19 @@
+{
+  "name": "assignment1",
+  "version": "1.0.0",
+  "description": "Complete Nodejs assignment",
+  "main": "assignment.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon assignment.js",
+    "start-server": "node assignment.js"
+  },
+  "keywords": [
+    "Nodejs"
+  ],
+  "author": "ErikQ.Birch",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
