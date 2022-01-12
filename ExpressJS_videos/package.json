@@ -1,15 +1,19 @@
 {
   "name": "expressjs_videos",
   "version": "1.0.0",
-  "main": "WorkBench.js",
+  "main": "appFromVideo.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node WorkBench.js"
+    "start": "nodemon appFromVideo.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "body-parser": "^1.19.1"
+    "body-parser": "^1.19.1",
+    "node-sass": "^7.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
