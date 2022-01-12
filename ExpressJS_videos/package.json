@@ -1,0 +1,12 @@
+{
+  "name": "expressjs_videos",
+  "version": "1.0.0",
+  "main": "WorkBench.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node WorkBench.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
