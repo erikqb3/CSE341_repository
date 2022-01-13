@@ -1,0 +1,12 @@
+{
+  "name": "assignment2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "assignment2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon assignment2"
+  },
+  "author": "",
+  "license": "ISC"
+}
