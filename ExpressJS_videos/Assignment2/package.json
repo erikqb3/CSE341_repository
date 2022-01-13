@@ -8,5 +8,9 @@
     "start": "nodemon assignment2"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "nodemon": "^2.0.15"
+  }
 }

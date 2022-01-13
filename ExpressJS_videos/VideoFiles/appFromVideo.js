@@ -1,5 +1,3 @@
-// const http = require('http');
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -7,24 +5,58 @@ const rootDir = require('./util/path');
 
 const app = express();
 
-const adminRoutes = require('./routes/admin');
+const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname,'public'))); //pass in a path you want to serve staticlly, get reaccseess to
 // express will take any request that tries to find some file and automatically forwards it to the public folder; in this case
 
-app.use('/admin', adminRoutes); // filter; only sites with /admin will go down the admin route
+app.use('/admin', adminData.routes); // filter; only sites with /admin will go down the admin route
 app.use(shopRoutes);
 
-app.use((req, res, next) => { //a catch all middleware, you make a 404 error page, no '/' requried; defualt, app.use will handle both gets and posts
-  // res.status(666).send('<h1>A Wild Missingno appeared! Error code 404</h1>') //status tells if code works or not
+app.use((req, res, next) => { 
   res.status(404).sendFile(path.join(rootDir,'views','404.html'))
 })
 
 
 
 app.listen(3000);
+
+
+
+
+// //BETA 2
+// // const http = require('http');
+
+// const express = require('express');
+// const bodyParser = require('body-parser');
+// const path = require('path');
+// const rootDir = require('./util/path');
+
+// const app = express();
+
+// const adminRoutes = require('./routes/admin');
+// const shopRoutes = require('./routes/shop');
+
+// app.use(bodyParser.urlencoded({extended: false}));
+// app.use(express.static(path.join(__dirname,'public'))); //pass in a path you want to serve staticlly, get reaccseess to
+// // express will take any request that tries to find some file and automatically forwards it to the public folder; in this case
+
+// app.use('/admin', adminRoutes); // filter; only sites with /admin will go down the admin route
+// app.use(shopRoutes);
+
+// app.use((req, res, next) => { //a catch all middleware, you make a 404 error page, no '/' requried; defualt, app.use will handle both gets and posts
+//   // res.status(666).send('<h1>A Wild Missingno appeared! Error code 404</h1>') //status tells if code works or not
+//   res.status(404).sendFile(path.join(rootDir,'views','404.html'))
+// })
+
+
+
+// app.listen(3000);
+
+
+// //BETA 1
 
 // app.use('/', (req, res, next) => {
 //   res.send('<h1>Hellow from Express</h1>') //better than res.write
