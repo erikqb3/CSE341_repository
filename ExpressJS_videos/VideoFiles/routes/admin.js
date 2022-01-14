@@ -11,7 +11,7 @@ router.get('/add-product', (req, res, next) => { //"/add-product" comes befre '/
 });
 
 router.post('/add-product', (req,res,next) => { //app.get is basically the same for app.use, but only acts on get requests (same thing with app.post)
-  console.log(req.body);
+  products.push({title: res.body.title});
   res.redirect('/');
 })
 

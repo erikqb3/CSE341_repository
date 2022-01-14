@@ -4,6 +4,8 @@ const path = require('path');
 const rootDir = require('./util/path');
 
 const app = express();
+app.set('view engine', 'pug'); //says we should use 'pug' whenever we try to render a template 
+app.set('views','views'); //view is default, but if not, make it so; we define all veiws to start in view folder
 
 const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
