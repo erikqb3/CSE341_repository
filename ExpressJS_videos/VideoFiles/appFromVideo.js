@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname,'public'))); //pass in a path you wan
 // express will take any request that tries to find some file and automatically forwards it to the public folder; in this case
 
 app.use('/admin', adminData.routes); // filter; only sites with /admin will go down the admin route
-// app.use(shopRoutes);
+app.use(shopRoutes);
 
 app.use((req, res, next) => { 
   res.status(404).render('404', {pageTitle: 'Page Not Found'});
