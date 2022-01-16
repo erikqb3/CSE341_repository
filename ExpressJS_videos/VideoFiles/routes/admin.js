@@ -21,7 +21,7 @@ router.get('/add-product', (req, res, next) => {
 
 // the post route is triggered when form is submmitted
 router.post('/add-product', (req,res,next) => { //app.get is basically the same for app.use, but only acts on get requests (same thing with app.post)
-  products.push({title: res.body.title});
+  products.push({title: req.body.title});
   res.redirect('/');
 })
 

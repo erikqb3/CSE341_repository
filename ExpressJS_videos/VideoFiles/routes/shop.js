@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 router.get('/', (req, res, next) => {
-  const products = admindData.products;
+  const products = adminData.products;
   res.render('shop', {
     prods: products,
     pageTitle: "Shop",
@@ -18,7 +18,7 @@ router.get('/', (req, res, next) => {
   });
 });
 
-module.exports - router;
+module.exports = router;
 
 
 
