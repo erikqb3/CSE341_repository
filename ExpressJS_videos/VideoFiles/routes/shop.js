@@ -7,13 +7,29 @@ const router = express.Router();
 
 
 router.get('/', (req, res, next) => {
-    // res.sendFile(path.join(rootDir, 'views', 'shop.html')); 
-  res.render('shop');
-  // const products = adminData.products;
-  // res.render('shop', {prods: products, docTitle: "Shop"}); 
+  const products = admindData.products;
+  res.render('shop', {
+    prods: products,
+    pageTitle: "Shop",
+    path: '/',
+    hasProducts: products.length > 0,
+    activeShop: true,
+    productsCss: true
+  });
 });
 
-module.exports = router;
+module.exports - router;
+
+
+
+// router.get('/', (req, res, next) => {
+//     // res.sendFile(path.join(rootDir, 'views', 'shop.html')); 
+//   res.render('shop');
+//   // const products = adminData.products;
+//   // res.render('shop', {prods: products, docTitle: "Shop"}); 
+// });
+
+// module.exports = router;
 
 
 

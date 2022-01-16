@@ -7,7 +7,7 @@
   <link href="/scss/AFV.css" rel="stylesheet"> 
   <!-- <link href="TestRun.css" rel="stylesheet"> -->
 
-  <title>Add Product</title>
+  <title><%= pageTitle %></title>
 </head>
 <body>
   <header class="main-header">
@@ -20,8 +20,23 @@
   </header>
 
   <main>
-    <h1>My Products</h1>
-    <p>List of all the products...</p>
+    <div class="grid">
+      <article class="card product-item">
+        <header class="card_header">
+          <h1 class="product_title">Great Book</h1>
+        </header>
+        <div class="card_image">
+          <img src="*" alt="A Book">
+        </div>
+        <div class="card_content">
+          <h2 class="product_price">$9.99</h2>
+          <p class="product_description">A very interesting boo, about so many events</p>
+        </div>
+        <div class="card_actions">
+          <button class="btn">Add to Cart</button>
+        </div>
+      </article>
+    </div>
   </main>
 </body>
 </html>

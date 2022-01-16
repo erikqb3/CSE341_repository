@@ -6,10 +6,20 @@ const router = express.Router();
 
 const products = [];
 
-router.get('/add-product', (req, res, next) => { //"/add-product" comes befre '/' because we won't be calling next(), thus preventing the other middle ware from happening, this is kind of a weird,unspoken,based on logic and cascading code "if statement"
-  res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
+// router.get('/add-product', (req, res, next) => { //"/add-product" comes befre '/' because we won't be calling next(), thus preventing the other middle ware from happening, this is kind of a weird,unspoken,based on logic and cascading code "if statement"
+  // res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
+router.get('/add-product', (req, res, next) => {
+  res.render('add-product', {
+    pageTitle: 'Add Product',
+    path: '/admin/add-product',
+    fromsCSS: true,
+    productCSS: true,
+    activeAddProduct: true
+  });
 });
+// });
 
+// the post route is triggered when form is submmitted
 router.post('/add-product', (req,res,next) => { //app.get is basically the same for app.use, but only acts on get requests (same thing with app.post)
   products.push({title: res.body.title});
   res.redirect('/');
