@@ -1,34 +1,52 @@
 const path = require('path');
 const express = require('express');
-const rootDir = require('../util/path');
+const productsController = require('../controllers/products');
 
 const router = express.Router();
 
-const products = [];
 
-// router.get('/add-product', (req, res, next) => { //"/add-product" comes befre '/' because we won't be calling next(), thus preventing the other middle ware from happening, this is kind of a weird,unspoken,based on logic and cascading code "if statement"
-  // res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
-router.get('/add-product', (req, res, next) => {
-  res.render('add-product', {
-    pageTitle: 'Add Product',
-    path: '/admin/add-product',
-    fromsCSS: true,
-    productCSS: true,
-    activeAddProduct: true
-  });
-});
+
+router.get('/add-product', productsController.getAddProduct); //getAddProduct is a function we are simply referencing, it's an argument function, a method
 // });
 
 // the post route is triggered when form is submmitted
-router.post('/add-product', (req,res,next) => { //app.get is basically the same for app.use, but only acts on get requests (same thing with app.post)
-  products.push({title: req.body.title});
-  res.redirect('/');
-})
+router.post('/add-product', productsController.postAddProduct);
 
-exports.routes = router;
-exports.products = products;
+module.exports = router;
 
 
+
+
+// BETA 
+// const path = require('path');
+// const express = require('express');
+// const rootDir = require('../util/path');
+
+// const router = express.Router();
+
+// const products = [];
+
+// // router.get('/add-product', (req, res, next) => { //"/add-product" comes befre '/' because we won't be calling next(), thus preventing the other middle ware from happening, this is kind of a weird,unspoken,based on logic and cascading code "if statement"
+//   // res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
+// router.get('/add-product', (req, res, next) => {
+//   res.render('add-product', {
+//     pageTitle: 'Add Product',
+//     path: '/admin/add-product',
+//     fromsCSS: true,
+//     productCSS: true,
+//     activeAddProduct: true
+//   });
+// });
+// // });
+
+// // the post route is triggered when form is submmitted
+// router.post('/add-product', (req,res,next) => { //app.get is basically the same for app.use, but only acts on get requests (same thing with app.post)
+//   products.push({title: req.body.title});
+//   res.redirect('/');
+// })
+
+// exports.routes = router;
+// exports.products = products;
 
 // // BETA
 // const path = require('path');

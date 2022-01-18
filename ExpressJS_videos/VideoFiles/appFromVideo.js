@@ -7,7 +7,7 @@ const app = express();
 app.set('view engine', 'ejs'); //says we should use 'pug' whenever we try to render a template 
 app.set('views','views'); //view is default, but if not, make it so; we define all veiws to start in view folder
 
-const adminData = require('./routes/admin');
+const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 console.log(shopRoutes);
 
@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname,'public'))); //pass in a path you want to serve staticlly, get reaccseess to
 // express will take any request that tries to find some file and automatically forwards it to the public folder; in this case
 
-app.use('/admin', adminData.routes); // filter; only sites with /admin will go down the admin route
+app.use('/admin', adminRoutes.routes); // filter; only sites with /admin will go down the admin route
 app.use(shopRoutes);
 
 app.use((req, res, next) => { 
@@ -25,6 +25,33 @@ app.use((req, res, next) => {
 })
 app.listen(3000);
 
+// // BETA 3
+// const express = require('express');
+// const bodyParser = require('body-parser');
+// const path = require('path');
+// const rootDir = require('./util/path');
+
+// const app = express();
+// app.set('view engine', 'ejs'); //says we should use 'pug' whenever we try to render a template 
+// app.set('views','views'); //view is default, but if not, make it so; we define all veiws to start in view folder
+
+// const adminData = require('./routes/admin');
+// const shopRoutes = require('./routes/shop');
+// console.log(shopRoutes);
+
+// app.use(bodyParser.urlencoded({extended: false}));
+// app.use(express.static(path.join(__dirname,'public'))); //pass in a path you want to serve staticlly, get reaccseess to
+// // express will take any request that tries to find some file and automatically forwards it to the public folder; in this case
+
+// app.use('/admin', adminData.routes); // filter; only sites with /admin will go down the admin route
+// app.use(shopRoutes);
+
+// app.use((req, res, next) => { 
+//   res.status(404).render('404', {pageTitle: 'Page Not Found'});
+//   // res.status(404).sendFile(path.join(rootDir,'views','404.html'))
+
+// })
+// app.listen(3000);
 
 
 
