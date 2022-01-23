@@ -8,20 +8,16 @@ Please answer the questions in this text file and submit it to I-Learn.
 (https://github.com/erikqb3/CSE341_repository.git)
 
 3. Briefly list and describe the elements of the application that are functioning. 
-(I have done two of the assignments from the videos; not the last one. I followed along with the video and now it
-is funcioning. The nav works so I can go back forth beween 'Shop' and 'Add Product'.
-I can also add product and form a list.)
+(I can edit the items, the nav bar works for the most part)
 
 4. Briefly describe any pieces of the assignment that are not yet working correctly.
-(Need to touch up on some css and add images. Besides that, it is as functional as the video's.)
+(The only part that doesn't work is the shopping cart)
 
 5. Briefly describe the "coolest" thing you learned while completing this assignment.
-(I've learned more about how router.get works along with the functionality of req and res. Also am satsified to be working
-with ejs and meshing javascript with html)
+(I really liked the part where we could edit the products, it was satisfying seeing the changes made)
 
 6. If you could change this assignment to be more effective or helpful, what would you change?
-(I'd say maybe provide a "What do you do if this problem happens" resource; specifically when there are installation and terminal problems. 
-That might be a bit much though.)
+(Sometimes I can't see what the video person has in his URL, thus I'm not sure if I'm on the right page. But that can't be changed.)
 
 7. Please select the category you feel best describes your assignment:
    1 - Some attempt was made
@@ -29,7 +25,6 @@ That might be a bit much though.)
    3 - Slightly deficient, but still mostly adequate
    4 - Meets requirements
    5 - Shows creativity and excels above and beyond requirements
-(4)
+(3)
 8. Provide a brief justification (1-2 sentences) for selecting that category.
-(I could do more, but the amount of time it took to figure out problems has drained me. Despite this though, with the help of many others,
-my code reliably does what it's limited options says it should do and therefore is enough for this week.)
+(I almost finished the videos. Just barely came up short after running into a crashing point.)
