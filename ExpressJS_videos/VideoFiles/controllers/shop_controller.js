@@ -1,0 +1,234 @@
+
+const Product = require('../models/product_model');
+const Cart = require('../models/cart_model');
+
+exports.getProducts = (req, res, next) => {
+  Product.fetchAll((products) => {
+    res.render('shop/product-list', {
+      prods: products,
+      pageTitle: "All Products",
+      path: '/products',
+    });
+  });
+};
+
+exports.getProduct_1 = (req, res, next) => {
+  const prodId = req.params.productId; //productId works as a params because it is after : in router
+  Product.findById(prodId, product => {
+    res.render('shop/product-detail', {
+    product: product,//left product is what we are retrieving, product on left is key
+    pageTitle:  product.title,
+    path: '/products'}); //if you get "path is not defined error" check this kind of stuff
+  })
+};
+
+
+
+exports.getIndex = (req, res, next) => {
+  Product.fetchAll((products) => {
+    res.render('shop/index', {
+      prods: products,
+      pageTitle: "Shop",
+      path: '/',
+    });
+  });
+}
+
+exports.getCart = (req, res, next) => {
+  Cart.getCart(cart => {
+    Product.fetchAll(productArray => {
+      const cartProducts = [];
+      for (product of productArray) {
+        const cartProductData = cart.productArray.find(prod => prod.id === product.id);
+        if (cartProductData) {
+          cartProducts.push({productData: product, qty: cartProductData.qty});
+        };
+      };
+      res.render('shop/cart', {
+        path: '/cart',
+        pageTitle: 'Your Cart', 
+        products:cartProducts //productArray?
+      });
+    });
+  });
+};
+
+exports.postCart = (req, res, next) => {
+  const prodId = req.body.productId; //productId = name in the input
+  Product.findById(prodId,(product) => {
+    Cart.addProduct(prodId, product.price);
+  });
+  res.redirect('/cart');
+};
+
+exports.postCartDeleteProduct = (req, res, next) => {
+  const prodId = req.body.productId;
+  Product.findById(prodId, product => {
+    Cart.deleteProduct(prodId, product.price);
+    res.redirect('/cart');
+  });
+  
+};
+
+
+exports.getOrders = (req, res, next) => {
+  res.render('shop/orders', {
+    path: '/orders',
+    pageTitle: 'Your Orders'
+  })
+}
+
+exports.getCheckout = (req, res, next) => {
+  res.render('shop/checkout', {
+    path: '/checkout',
+    pageTitle: 'Checkout'
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // const products = [];
+
+// const Product = require('../models/product');
+
+// exports.getAddProduct = (req, res, next) => {
+//     res.render('admin/add-product', {
+//       pageTitle: 'Add Product',
+//       path: '/admin/add-product',
+//       // fromsCSS: true,
+//       // productCSS: true,
+//       // activeAddProduct: true
+//     });
+//   }
+
+
+// exports.postAddProduct = (req,res,next) => { //app.get is basically the same for app.use, but only acts on get requests (same thing with app.post)
+//     // products.push({title: req.body.title})
+    
+//     const product = new Product(req.body.title);
+//     product.save(); //uses save message from prodjct.js
+//     res.redirect('/');
+//   };
+
+  
+
+// exports.getProducts = (req, res, next) => {
+//   // const products = adminData.products;
+//   Product.fetchAll((products) => {
+//       // const products = Product.fetchAll();
+//   // Product.fetchAll(products => {
+//     res.render('shop/product-list', {
+//       prods: products,
+//       pageTitle: "Shop",
+//       path: '/',
+//       // hasProducts: products.length > 0,
+//       // activeShop: true,
+//       // productsCss: true
+//     });
+//   });
+//   // });
+//   // }
+// };
+
+
+
+
+
+
+
+// // const products = [];
+// const Product = require('../models/product')
+
+// exports.getAddProduct = (req, res, next) => {
+//   res.render('add-product', {
+//     pageTitle: 'Add Product',
+//     path: '/admin/add-product',
+//     fromsCSS: true,
+//     productCSS: true,
+//     activeAddProduct: true
+//   });
+// }
+
+// exports.postAddProduct = (req,res,next) => { //app.get is basically the same for app.use, but only acts on get requests (same thing with app.post)
+//   // products.push({title: req.body.title})
+  
+//   const product = new Product(req.body.title);
+//   product.save(); //uses save message from prodjct.js
+//   res.redirect('/');
+// }
+
+
+// exports.getProducts = (req, res, next) => {
+//   // Product.fetchAll((products) => {
+//       // const products = Product.fetchAll();
+//   // Product.fetchAll(products => {
+//     res.render('shop', {
+//       prods: products,
+//       pageTitle: "Shop",
+//       path: '/',
+//       hasProducts: products.length > 0,
+//       activeShop: true,
+//       productsCss: true
+//     });
+//   // });
+//   // });
+// };
+
+
+
+
+
+
+
+// const Product = require('../models/product')
+
+// exports.getAddProduct = (req, res, next) => {
+//   res.render('add-product', {
+//     pageTitle: 'Add Product',
+//     path: '/admin/add-product',
+//     fromsCSS: true,
+//     productCSS: true,
+//     activeAddProduct: true
+//   });
+// }
+
+// exports.postAddProduct = (req,res,next) => { //app.get is basically the same for app.use, but only acts on get requests (same thing with app.post)
+//   const product = new Product(req.body.title);
+//   product.save();
+//   res.redirect('/');
+// }
+
+// exports.getProducts = (req, res, next) => {
+//   Product.fetchAll((products) => {
+//     res.render('shop', {
+//       prods: products,
+//       pageTitle: "Shop",
+//       path: '/',
+//       hasProducts: products.length > 0,
+//       activeShop: true,
+//       productsCss: true
+//     });
+//   });
+// }

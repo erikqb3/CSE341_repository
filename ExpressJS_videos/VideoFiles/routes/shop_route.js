@@ -1,15 +1,42 @@
 const path = require('path'); //module
 const express = require('express');
-// const rootDir = require('../util/path');
-// const adminData = require ('./admin');
+const shopController = require('../controllers/shop_controller');
 
-const productsController = require('../controllers/products');
 const router = express.Router();
 
-
-router.get('/', productsController.getProducts); //productsController.getProducts is an argument function within the get function
+router.get('/', shopController.getIndex); //productsController.getProducts is an argument function within the get function
+router.get('/products', shopController.getProducts);
+router.get('/products/:productId', shopController.getProduct_1); // : says that product can be anything //if you had another route with similar path, put it before the route with :
+router.get('/cart', shopController.getCart);
+router.post('/cart', shopController.postCart) //post route
+router.post('/cart-delete-item', shopController.postCartDeleteProduct)
+router.get('/orders', shopController.getOrders);
+router.get('/checkout', shopController.getCheckout);
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

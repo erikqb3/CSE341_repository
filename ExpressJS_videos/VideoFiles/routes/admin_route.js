@@ -1,18 +1,45 @@
+
 const path = require('path');
 const express = require('express');
-const productsController = require('../controllers/products');
+const adminController = require('../controllers/admin_controller');
 
 const router = express.Router();
 
 
+// /admin/add-product => GET
+router.get('/add-product', adminController.getAddProduct); //getAddProduct is a function we are simply referencing, it's an argument function, a method
+// /admin/add-product => POST
+router.post('/add-product', adminController.postAddProduct);
+// /admin/products => GET
+router.get('/products_view', adminController.getProducts);
 
-router.get('/add-product', productsController.getAddProduct); //getAddProduct is a function we are simply referencing, it's an argument function, a method
-// });
+router.get('/edit-product/:productId', adminController.getEditProduct);
 
-// the post route is triggered when form is submmitted
-router.post('/add-product', productsController.postAddProduct);
+router.post('/edit-product', adminController.postEditProduct);
+
+router.post('/delete-product', adminController.postDeleteProduct);
 
 module.exports = router;
+
+
+
+
+
+// // const path = require('path');
+// const express = require('express');
+// const productsController = require('../controllers/products');
+
+// const router = express.Router();
+
+
+
+// router.get('/add-product', productsController.getAddProduct); //getAddProduct is a function we are simply referencing, it's an argument function, a method
+// // });
+
+// // the post route is triggered when form is submmitted
+// router.post('/add-product', productsController.postAddProduct);
+
+// module.exports = router;
 
 
 

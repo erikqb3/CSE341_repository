@@ -1,0 +1,16 @@
+
+<%- include('../partials/head.ejs') %>
+<body>
+  <%- include('../partials/nav.ejs') %>
+
+  <main class="centered">
+    <h1><%= product.title %></h1>
+    <hr>
+    <div>
+      <img src="<%= product.imgURL %>" alt = "<%= product.title %>">
+    </div>
+    <h2><%= product.price %></h2>
+    <p><%= product.descript %></p>
+    <%- include('../partials/add-to-cart.ejs') %>
+    </main>
+</body>
