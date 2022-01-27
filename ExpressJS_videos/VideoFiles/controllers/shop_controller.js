@@ -36,18 +36,32 @@ exports.getIndex = (req, res, next) => {
 
 exports.getCart = (req, res, next) => {
   Cart.getCart(cart => {
-    Product.fetchAll(productArray => {
+    Product.fetchAll((products) => {
       const cartProducts = [];
-      for (product of productArray) {
-        const cartProductData = cart.productArray.find(prod => prod.id === product.id);
+      let counter = -1;
+      for (product of products) {
+        counter++;
+        // console.log(product, "PRODUCT, shop_controller.js/45");
+        // console.log(products, "PRODUCTS, shop_controller/46")
+        // console.log(cart, "CART, shop_controller.js/47");
+        // console.log(cart.productArray, "CART.PRODUCTARRAY, shop_controller.js/48");
+        // console.log(cart.productArray.id, "CART.PRODUCTARRAY.ID, shop_controller.js/49");
+        // console.log(products, "PRODCUTS, shop_controller.js/50")
+        // console.log(counter, "COUNTER, shop_controller.js/67")
+        // console.log(product, "PRODCUT, shop_controller.js/68")
+        // console.log(cart.productArray[counter].qty, "CART.PRODUCTARRAY[0].qty, shop_controller.js/69");
+        const cartProductData = products.find(prod => prod.id === product.id); //prod = product looking at in cart, product.id = 
+        // console.log(cartProductData, "CARTPRODCUTDATA, shop_controller/50")
         if (cartProductData) {
-          cartProducts.push({productData: product, qty: cartProductData.qty});
+          cartProducts.push({productData: product, qty: cart.productArray[counter].qty});
+          // console.log(cartProducts,"CARTPRODUCTS, shop_controllers/55")
+          // console.log(cart.productArray.qty, "CART.PRODUCTARRAY.QTY, shop_controller/54")
         };
       };
       res.render('shop/cart', {
         path: '/cart',
         pageTitle: 'Your Cart', 
-        products:cartProducts //productArray?
+        products: cartProducts //productArray?
       });
     });
   });

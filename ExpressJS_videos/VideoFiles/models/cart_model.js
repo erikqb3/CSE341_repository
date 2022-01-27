@@ -5,7 +5,7 @@ const rootDir = require('../util/path')
 const p = path.join( //have a global so all functions have access
   rootDir,
   'data',
-  'cart.json'
+  'cart_data.json'
 );
 
 module.exports = class Cart {
@@ -23,6 +23,11 @@ module.exports = class Cart {
       if (!err) {
         cart = JSON.parse(fileContent);
       }
+      console.log(cart,"CART");
+      // console.log(cart[0], "CART[0], cart_model.ejs/27")
+
+      console.log(cart.productArray, "PRODUCT.ARRAY");
+      // console.log(productArray, "productArray, cart_model.ejs/30");
       const existingProductIndex = cart.productArray.findIndex(prod => prod.id === id);
       const existingProduct = cart.productArray[existingProductIndex]; //use to replace existing product in cart
       let updatedProduct;
@@ -37,6 +42,7 @@ module.exports = class Cart {
         cart.productArray = [ ...cart.productArray, updatedProduct]
       }
       cart.totalPrice = cart.totalPrice + +productPrice; //+productPrice is now a number to avoid string concatination
+      // console.log(cart, "CART, cart_model.js/45")
       fs.writeFile(p, JSON.stringify(cart), err => {
         console.log(err);
       });
@@ -64,7 +70,9 @@ module.exports = class Cart {
 
   static getCart(cb) {
     fs.readFile(p, (err, fileContent) => {
+      // console.log(fileContent, "FILE CONTENT, cart_model/73");
       const cart = JSON.parse(fileContent);
+      // console.log(cart, "CART, cart_model.js/75")
       if (err) {
         cb(null);
       }

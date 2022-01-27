@@ -1,0 +1,8 @@
+@import 'opt1(min)';
+
+@media only screen and (min-width: 760px) {
+  @import 'opt1(med)';
+}
+@media only screen and (min-width: 1200px) {
+  @import 'opt1(max)';
+}

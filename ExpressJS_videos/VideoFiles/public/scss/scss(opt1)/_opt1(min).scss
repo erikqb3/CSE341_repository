@@ -1,0 +1,79 @@
+body {
+  // background-color: 'https://cdn.glitch.com/b76629d6-7d20-4296-9a57-a0101d139dd6%2Fac82648f-0736-431a-9f18-81ac2fcea9f9.image.png?v=1624646975079';
+  background-image: url('../../imgs/backgroundIMG.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.main-header {
+  width: 95%;
+  height: 10rem;
+  background-color: rgb(255, 145, 76);
+  border: 10px solid rgb(237, 181, 134);
+  margin: 0 auto;
+  text-align: center;
+  // padding: 0 1.5rem;
+}
+
+.main-header_nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.main-header_item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  // display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+li.main-header_item {
+  font-size: 1.5rem;
+  width: 75%;
+  margin: 0.25rem auto;
+}
+.main-header_item > a {
+  display: block;
+  text-decoration: none;
+  line-height: 2rem;
+  width: 100%;
+  background-color: rgb(213, 86, 69);
+  border: 5px solid rgb(141, 56, 45);
+  color: white;
+}
+.main-header_item a:hover,
+.main-header_item a:active,
+.main-header_item a.active {
+  background-color: rgb(141, 56, 45);
+  border: 5px solid rgb(213, 86, 69);
+}
+
+main {
+  // padding: 2rem;
+}
+// ADD PRODUCT
+form.product-form {
+  width: 80%;
+  margin: 25px auto;
+  background-color: #feece0;
+  padding: 1rem;
+  display: block;
+  text-align: left;
+  label {
+    display: block;
+    font-size: 18px;
+  }
+  input,
+  textarea {
+    width: 100%;
+  }
+  button {
+    display: block;
+    margin: 20px auto 0 auto;
+  }
+}

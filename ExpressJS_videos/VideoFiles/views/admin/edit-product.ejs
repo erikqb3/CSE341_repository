@@ -20,7 +20,7 @@
       </div>
       <div class="form-control">
         <label for="descript">Description</label>
-        <textarea name="descript" id="descript" rows = "5">"<% if (editing) { %><%= product.descript %><% } %>"</textarea>
+        <textarea name="descript" id="descript" rows = "5"><% if (editing) { %><%= product.descript %><% } %></textarea>
       </div>
       <% if (editing) { %>
         <input type="hidden" value="<%= product.id %>" name="productId">

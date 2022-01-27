@@ -10,7 +10,7 @@ const Cart = require('./cart_model')
 const p = path.join( //have a global so all functions have access
   rootDir,
   'data',
-  'products.json'
+  'products_data.json'
 );
 
 

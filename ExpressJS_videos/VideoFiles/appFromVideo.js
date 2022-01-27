@@ -1,7 +1,9 @@
+// In-Class TA = Samuel Witt
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const errorController = require('./controllers/error_controller'); //this is basically getting partials javascript style, 
+const mongoConnect = require('./util/database') 
 
 
 const app = express();
@@ -20,7 +22,53 @@ app.use('/admin', adminRoutes); // filter; only sites with /admin will go down t
 app.use(shopRoutes);
 
 app.use(errorController.get404);
-app.listen(3000);
+
+// mongoConnect(client => { //KEEP THIS
+//   console.log(client);
+//   app.listen(3000);
+// })
+
+// app.listen(3000);
+
+//TEAM ACTIVITY STUFF
+const cors = require('cors') // Place this with other requires (like 'path' and 'express')
+
+const corsOptions = {
+    origin: "https://<your_app_name>.herokuapp.com/",
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
+const options = {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    family: 4
+};
+
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://<username>:<username>@cse341cluster-3dwlw.mongodb.net/test?retryWrites=true&w=majority";
+                        
+mongoose.connect(
+    MONGODB_URL, options
+  )
+  .then(result => {
+ // This should be your user handling code implement following the course videos
+    app.listen(PORT);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
+
+
+
+
+
+
+
+
+
 
 // // BETA 3
 // const express = require('express');
