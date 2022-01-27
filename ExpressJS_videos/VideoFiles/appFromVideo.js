@@ -50,7 +50,7 @@ app.listen(3000);
 
 // const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://erikqb3:DiscipleofChrist_2408@cse341cluster-3dwlw.mongodb.net/test?retryWrites=true&w=majority";
                         
-// mongoose.connect(
+// mongoose.connect( //you need to finsih the videos, 
 //     MONGODB_URL, options
 //   )
 //   .then(result => {
