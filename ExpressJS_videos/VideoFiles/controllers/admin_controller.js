@@ -17,27 +17,29 @@ exports.postAddProduct = (req,res,next) => { //app.get is basically the same for
   const imgURL = req.body.imgURL;
   const price = req.body.price;
   const descript = req.body.descript;
-  const product = new Product(
-    title, 
-    price, 
-    descript, 
-    imgURL,
-    null,
-    req.user._id
-    );
-  // console.log(product, "PRODUCT, admin_controller/19");
+  const product = new Product(null, title, imgURL, price, descript);
+  // const product = new Product(
+  //   title, 
+  //   price, 
+  //   descript, 
+  //   imgURL,
+  //   null,
+  //   req.user._id
+  //   );
+  console.log(product, "PRODUCT, admin_controller/29");
   // product.save();
   // res.redirect('/');
   product
     .save()
-    .then(result => {
-      // console.log('Created Product, admin_controller/23');
-      res.redirect('/admin/products');
-    })
-    .catch(err => {
-      console.log(err);
-      res.redirect('/');
-    });//uses save message from prodjct.js
+    // .then(result => {
+    //   // console.log('Created Product, admin_controller/23');
+    //   res.redirect('/admin/products');
+    // })
+    // .catch(err => {
+    //   console.log(err);
+    //   res.redirect('/');
+    // });//uses save message from prodjct.js
+    res.redirect('/');
   };
 
 
