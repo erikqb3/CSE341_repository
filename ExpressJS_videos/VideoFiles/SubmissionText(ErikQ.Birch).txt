@@ -2,22 +2,31 @@ After completing the assignment, be sure to push to Github and Heroku.
 Please answer the questions in this text file and submit it to I-Learn.
 
 1. Copy and paste the URL for your web application (e.g., Heroku):
-(NA)
+(https://secure-sands-24486.herokuapp.com/)
+(doesn't work yet)
+
 
 2. Copy and paste the URL for your source code repository (e.g., GitHub):
 (https://github.com/erikqb3/CSE341_repository.git)
 
 3. Briefly list and describe the elements of the application that are functioning. 
-(I can edit the items, the nav bar works for the most part)
+(* User can navigate to the page of all the nav tabs except the "Cart" tab
+*  Admins are able to add products)
 
 4. Briefly describe any pieces of the assignment that are not yet working correctly.
-(The only part that doesn't work is the shopping cart)
+(* The only tab that users can't navigate to is the "Cart" tab
+* User cannot delete elements
+* Admins cannot edit elements, but are sent to the home page
+* Users cannot delete products from their carts
+* No orders/no user ids
+* mongodb Compass isn't uploading a "shop" database
+* unable to connect to Heroku)
 
 5. Briefly describe the "coolest" thing you learned while completing this assignment.
-(I really liked the part where we could edit the products, it was satisfying seeing the changes made)
+(I've learned more of how to navigate between the modules, controllers, and views! It's actually pretty cool figuring out problems and trailing your way back to the source.)
 
 6. If you could change this assignment to be more effective or helpful, what would you change?
-(Sometimes I can't see what the video person has in his URL, thus I'm not sure if I'm on the right page. But that can't be changed.)
+(I need someone who can walk me through my problems and get me back on track.)
 
 7. Please select the category you feel best describes your assignment:
    1 - Some attempt was made
@@ -25,6 +34,6 @@ Please answer the questions in this text file and submit it to I-Learn.
    3 - Slightly deficient, but still mostly adequate
    4 - Meets requirements
    5 - Shows creativity and excels above and beyond requirements
-(3)
+(2)
 8. Provide a brief justification (1-2 sentences) for selecting that category.
-(I almost finished the videos. Just barely came up short after running into a crashing point.)
+(I honestly tried. When I was making progress, I decided to keep going so I wouldn't be totally behind, and got even more stuck; worse than before. I'm trying as hard as I can though. Going to try and try 'smarter' next week.)

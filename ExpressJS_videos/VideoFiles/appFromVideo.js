@@ -1,5 +1,6 @@
 // In-Class TA = Samuel Witt
 const path = require('path');
+const PATH = process.env.PORT || 3000;
 const express = require('express');
 const bodyParser = require('body-parser');
 const errorController = require('./controllers/error_controller'); //this is basically getting partials javascript style, 
@@ -38,7 +39,7 @@ app.use(errorController.get404);
 
 mongoConnect( () => { //KEEP THIS
 
-  app.listen(3000);
+  app.listen(PATH);
 })
 
 // app.listen(3000);

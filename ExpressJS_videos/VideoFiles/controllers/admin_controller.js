@@ -30,7 +30,7 @@ exports.postAddProduct = (req,res,next) => { //app.get is basically the same for
   // product.save();
   // res.redirect('/');
   product
-    .save()
+    .save();
     // .then(result => {
     //   // console.log('Created Product, admin_controller/23');
     //   res.redirect('/admin/products');
@@ -50,22 +50,25 @@ exports.getEditProduct = (req, res, next) => {
   const editMode = req.query.edit; //req.query, the stuff after URL starting with a ?, can have & to have several queries like edit (Always a String, to "true" instead of true)
   // console.log("EditMode",editMode)
   if (!editMode) {
+    console.log("EDITMODE = FALSE, admin_controller/53")
     return res.redirect('/');
   }
-  const prodId = req.params.product._id;
-  Product.findById(prodId)
-    .then(product => {
-      if (!product) {
-        return res.redirect('/');
-      };
-        res.render('admin/edit-product', {
-          pageTitle: 'Edit Product',
-          path: '/admin/edit-product', //Add-product no longer highlighed on nav
-          editing: editMode, //flag variable?
-          product: product
-      });
-    })
-    .catch(err => console.log(err));
+  console.log(req.params, "REQ.PRAMS,admin_controller/55")
+  const prodId = req.params.productid;
+  Product.findById(prodId, product => {
+    if (!product) {
+      return res.redirect('/');
+    };
+      res.render('admin/edit-product', {
+        pageTitle: 'Edit Product',
+        path: '/admin/edit-product', //Add-product no longer highlighed on nav
+        editing: editMode, //flag variable?
+        product: product
+    });
+  });
+    // .then(product => {
+    // })
+    // .catch(err => console.log(err));
   // Product.findById(prodId, product => {
   //   }
   // });
