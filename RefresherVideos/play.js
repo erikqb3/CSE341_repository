@@ -128,7 +128,7 @@
 
 //asynchronise code --> take time no matter how short
 setTimeout( ()=> {
-  console.log("Timer is done!")
+  // console.log("Timer is done!")
 },2000);
 
 setTimeout( ()=> { 

@@ -5,12 +5,12 @@ const express = require('express');
 const app = express();
 
 app.use((req, res, next) => { //middleware
-  console.log("In the middleware");
+  // console.log("In the middleware");
   next(); // skips to next middleware
 });
 
 app.use((req, res, next) => { //middleware
-  console.log("In another middleware");
+  // console.log("In another middleware");
   // next();
 });
 

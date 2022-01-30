@@ -23,10 +23,10 @@ module.exports = class Cart {
       if (!err) {
         cart = JSON.parse(fileContent);
       }
-      console.log(cart,"CART");
+      // console.log(cart,"CART");
       // console.log(cart[0], "CART[0], cart_model.ejs/27")
 
-      console.log(cart.productArray, "PRODUCT.ARRAY");
+      // console.log(cart.productArray, "PRODUCT.ARRAY");
       // console.log(productArray, "productArray, cart_model.ejs/30");
       const existingProductIndex = cart.productArray.findIndex(prod => prod.id === id);
       const existingProduct = cart.productArray[existingProductIndex]; //use to replace existing product in cart
@@ -55,10 +55,16 @@ module.exports = class Cart {
         return;
       };
       const updatedCart = { ...JSON.parse(fileContent) };
-      const product = updatedCart.products.find(prod => prod.id === id);
+      // console.log(updatedCart, "UPDATEDCART, cart_model.ejs/58");
+      // console.log(updatedCart.productArray, "UPDATEDCART.PRODCUTARRAY, cart_model.js/59")
+      const product = updatedCart.productArray.find(prod => prod.id === id);
+      // console.log(product,'PRODUCT, cart_model.js/61')
+      if (!product) {
+        return;
+      }
       const productQty = product.qty;
-      updatedCart.products = updatedCart.products.filter(
-        prod => prod.id === id)
+      updatedCart.productArray = updatedCart.productArray.filter(
+        prod => prod.id !== id)
       updatedCart.totalPrice = updatedCart.totalPrice - productPrice * productQty;
 
       fs.writeFile(p, JSON.stringify(updatedCart), err => {

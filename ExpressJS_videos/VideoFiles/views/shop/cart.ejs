@@ -7,18 +7,15 @@
       <ul>
         <% products.forEach(p => { %>
           <li><%= p.productData.title %> (<%= p.qty %>) </li>
-        <% 
-        //console.log(p.qty,"P.QTY, cart.ejs/11")
-        //console.log(p, "P, cart.ejs/12")
-        //to comment this stuff out, use this and not the arrow stuff
-      
-      }) %> 
+          <!-- <% console.log(p)%> -->
+          <form action="/cart-delete-item" method="POST">
+            <input type="hidden" value="<%= p.productData.id %>" name="productId"> 
+            <button class="btn" type="submit">Delete</button>
+          </form>
+          <% }) %> 
 
       </ul>
-      <form action="/cart-delete-item" method="POST">
-        <input type="hidden" value="<%= p.productData.id %>" name="productId">
-        <button class="btn" type="submit">Delete</button>
-      </form>
+
     <% } else {%>
       <h1>No Products in Cart!</h1>
       <% } %>

@@ -13,7 +13,7 @@ router.post('/add-product', adminController.postAddProduct);
 // /admin/products => GET
 router.get('/products_view', adminController.getProducts);
 
-router.get('/edit-product/:productId', adminController.getEditProduct);
+router.get('/edit-product/:product._id', adminController.getEditProduct);
 
 router.post('/edit-product', adminController.postEditProduct);
 

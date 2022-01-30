@@ -1,4 +1,87 @@
 // const products = [];
+const mongodb = require('mongodb');
+const getDB = require('../util/database').getDB;
+
+class Product {
+  constructor(Title, Price, Description, imageURL, ID) {
+    this.title = Title;
+    this.price = Price;
+    this.descipt = Description;
+    this.imgURL = imageURL;
+    this._id = id ? new mongodb.ObjectId(id):null;
+  }
+
+  save() {
+    if (this._id) {
+      //Update the product
+      dbOp = db //database Operation
+        .collection("prodcuts")
+        .updateOne({_id: new mongodb.ObjectId(this._id)}, {$set: this});
+    } else {
+      dbOp = db.collection('products').insertOne(this);
+    }
+    return dbOp
+      .then(result => {
+        console.log(results);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    };
+    // const database = getDB();
+    // return database.collection('products') //if collections doesn't exist, it will be created automatically
+    //   .insertOne(this) // we want to insert product into database
+    //   .then(result => {
+    //     console.log(result, "RESULT, Product_moedule.js, 17");
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
+
+
+  static fetChAll() {
+    return db
+    .collection('products')
+    .find()
+    .toArray()
+    .then( products => {
+      console.log(products, "PRODUCTS, product_model/111");
+      return products;
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
+  static findById(prodId) {
+    const db = getDb();
+    return db
+    .collection('products')
+    .find({_id: new mongodb.ObjectId(prodId)}) //Mongodb uses _id and ObejectId
+    .next()
+    .then(product => {
+      console.log(product, "PRODUCT, product_model.js/46");
+      return product;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+
+  static deleteById(prodId) {
+    const db = getDb();
+    db.collection('products')
+    .deleteOne({ _id: new mongodb.ObjectId(prodId)})
+    .then(result => {
+      console.log("DELETED, product_model.js/76")
+    })
+    .catch(err => {
+      console.log(err)
+    });
+  }
+}
+
+
 
 const fs = require('fs');
 const path = require('path');
@@ -55,11 +138,15 @@ module.exports = class Product {
   }
 
   static deleteById(id) {
-    getProductsFromFile(products=> {
+    getProductsFromFile(products => {
+      // console.log(products, "PRODUCTS, product_model.js/83")
       const product = products.find(prod => prod.id === id)
+      // console.log(product, "PRODUCT, product_model/85");
+      console.log(id, "ID, product_models.js/86");
       const updatedProducts = products.filter(prod => prod.id !== id);
       fs.writeFile(p, JSON.stringify(updatedProducts), err => {
         if (!err) {
+          // console.log(product, "PRODUCT, product_model/90")
           Cart.deleteProduct(id, product.price);
         }
       });
@@ -69,9 +156,24 @@ module.exports = class Product {
 // static fetchAll() {
   // return products;
 
+  //OLD
 static fetchAll(cb) { //fetchAll is asynchronous, cb, allows to  pass function into fetch all which fetchall will execute when it is done, so that the thing calling fetchalALL can pass of faction it is then being awa
     getProductsFromFile(cb);
   }
+
+// static fetChAll() {
+//   return db
+//   .collection('products')
+//   .find()
+//   .toArray()
+//   .then( products => {
+//     console.log(products, "PRODUCTS, product_model/111");
+//     return products;
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   })
+// }
 
 static findById(id,cb) { //cb is anyfunction we need to use, dont' konw name, but still use
   getProductsFromFile(products=> {

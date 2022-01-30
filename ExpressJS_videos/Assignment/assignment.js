@@ -3,8 +3,8 @@ const express = require('express');
 const app = express();
 
 app.use((req, res, next) =>{
-  console.log("This will always run, not sure if it runs twice and if it does, why?");
-  console.log("oh good, it only runs once, with every time you refresh or change page")
+  // console.log("This will always run, not sure if it runs twice and if it does, why?");
+  // console.log("oh good, it only runs once, with every time you refresh or change page")
   next();
 })
 

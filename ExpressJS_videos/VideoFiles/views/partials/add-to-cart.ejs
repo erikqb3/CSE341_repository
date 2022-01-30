@@ -1,5 +1,5 @@
 <form action="/cart" method="POST"> <!--We can pass data into request body with POST-->
   <button class='btn' type='submit'>Add to Cart</button>
-  <input type="hidden" name="productId" value="<%= product.id %>">
-  <%- console.log(product.id, "PRODUCT.ID, add-to-cart.ejs/4") %><!--hidden hids it, but still runs through code-->
+  <input type="hidden" name="productId" value="<%= product._id %>">
+  <!-- <%- //console.log(product.id, "PRODUCT.ID, add-to-cart.ejs/4") %> -->
 </form>
