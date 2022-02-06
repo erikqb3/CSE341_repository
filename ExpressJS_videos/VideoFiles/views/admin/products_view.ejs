@@ -19,11 +19,11 @@
             <p class="product_description"><%= product.descript %></p>
           </div>
           <div class="card_actions">
-            <% console.log(product, "PRODUCT, products_view.ejs/22") %>
+            <% //console.log(product.id, "PRODUCT.ID, products_view.ejs/22") %>
             <a href="/admin/edit-product/<%= product.id %>?edit=true" class="btn">Edit</a>  
             <form action="/admin/delete-product" method="POST">
-              <input type="hidden" value="<% product.id %>" name="productId"> <!--with Mongodo, product._id not product.id-->
-              <% console.log(product._id, "PRODUCT._ID, products_view.ejs/ 25")%>
+              <input type="hidden" value="<%= product.id %>" name="productId"> <!--with Mongodo, product._id not product.id-->
+              <% //console.log(product.id, "PRODUCT.ID, products_view.ejs/ 26")%>
               <button class="btn" type="submit">Delete</button>
             </form>
           </div>

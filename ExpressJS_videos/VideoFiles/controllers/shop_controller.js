@@ -13,13 +13,15 @@ exports.getProducts = (req, res, next) => {
 };
 
 exports.getProduct_1 = (req, res, next) => {
-  const prodId = req.params.product._id; //productId works as a params because it is after : in router
-  console.log(prodId, "PRODID, shop_controlers.js/17")
-  console.log(req.params, "REQ.PARAMS, shop_controllers.js/18")
+  console.log(req.params.product, "REQ.PARAMS.PRODUCT, shop_controller")
+  const prodId = req.params.productId; //productId works as a params because it is after : in router
+  // console.log(prodId, "PRODID, shop_controlers.js/17")
+  // console.log(req.params, "REQ.PARAMS, shop_controllers.js/18")
   Product.findById(prodId, product => {
     res.render('shop/product-detail', {
     product: product,//left product is what we are retrieving, product on left is key
-    pageTitle: product.title,    path: '/products'}); //if you get "path is not defined error" check this kind of stuff
+    pageTitle: product.title,
+    path: '/products'}); //if you get "path is not defined error" check this kind of stuff
   })
 };
 
@@ -51,7 +53,7 @@ exports.getCart = (req, res, next) => {
         // console.log(counter, "COUNTER, shop_controller.js/67")
         // console.log(product, "PRODCUT, shop_controller.js/68")
         // console.log(cart.productArray[counter].qty, "CART.PRODUCTARRAY[0].qty, shop_controller.js/69");
-        const cartProductData = products.find(prod => prod.id === product._id); //prod = product looking at in cart, product.id = 
+        const cartProductData = products.find(prod => prod.id ===product.id); //prod = product looking at in cart, product.id = 
         // console.log(cartProductData, "CARTPRODCUTDATA, shop_controller/50")
         if (cartProductData) {
           console.log(cart.productArray.qty, "CART.PRODUCTARRAY.QTY, shop_controller.js/ 56")
@@ -63,22 +65,25 @@ exports.getCart = (req, res, next) => {
       res.render('shop/cart', {
         path: '/cart',
         pageTitle: 'Your Cart', 
-        products: cartProducts //productArray?
+        productArray: cartProducts //productArray?
       });
     });
   });
 };
 
 exports.postCart = (req, res, next) => {
-  const prodId = req.body.product._id; //productId = name in the input
-  Product.findById(prodId,(product) => {
+  const prodId = req.body.productId; //productId = name in the input
+  console.log(req.body, "REQ.BODY, shop_controller/76")
+  console.log(prodId,"PRODID, shop_controller/77");
+  Product.findById(prodId, product => {
+    console.log(product, "PRODUCT, shop_controller/79");
     Cart.addProduct(prodId, product.price);
   });
   res.redirect('/cart');
 };
 
 exports.postCartDeleteProduct = (req, res, next) => {
-  const prodId = req.body.product._id;
+  const prodId = req.body.productId;
   Product.findById(prodId, product => {
     Cart.deleteProduct(prodId, product.price);
     res.redirect('/cart');

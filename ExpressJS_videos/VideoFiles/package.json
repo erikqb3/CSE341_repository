@@ -4,9 +4,8 @@
   "main": "appFromVideo.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node appFromVideo.js",
-    "start-dev": "nodemon appFromVideo.js",
-    "start-server": "nodemon appFromVideo.js"
+    "start": "nodemon appFromVideo.js",
+    "start-dev": "node appFromVideo.js"
   },
   "author": "",
   "license": "ISC",

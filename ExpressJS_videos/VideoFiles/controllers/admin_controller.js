@@ -26,7 +26,7 @@ exports.postAddProduct = (req,res,next) => { //app.get is basically the same for
   //   null,
   //   req.user._id
   //   );
-  console.log(product, "PRODUCT, admin_controller/29");
+  // console.log(product, "PRODUCT, admin_controller/29");
   // product.save();
   // res.redirect('/');
   product
@@ -50,13 +50,14 @@ exports.getEditProduct = (req, res, next) => {
   const editMode = req.query.edit; //req.query, the stuff after URL starting with a ?, can have & to have several queries like edit (Always a String, to "true" instead of true)
   // console.log("EditMode",editMode)
   if (!editMode) {
-    console.log("EDITMODE = FALSE, admin_controller/53")
+    // console.log("EDITMODE = FALSE, admin_controller/53")
     return res.redirect('/');
   }
-  console.log(req.params, "REQ.PRAMS,admin_controller/55")
-  const prodId = req.params.productid;
+  // console.log(req.params, "REQ.PRAMS,admin_controller/56")
+  const prodId = req.params.productId;
   Product.findById(prodId, product => {
     if (!product) {
+      console.log(product, "PRODUCT, admin_controllers.js/60")
       return res.redirect('/');
     };
       res.render('admin/edit-product', {
@@ -80,22 +81,25 @@ exports.postEditProduct = (req, res, next) => {
 // create new product instance and populate it with info
 // call save
 
-  const prodId = req.body._productId;
+  const prodId = req.body.productId;
   const updatedTitle = req.body.title;
-  const updatedPrice = req.body.price;
   const updatedImgURL = req.body.imgURL;
+  const updatedPrice = req.body.price;
   const updatedDescript = req.body.descript;
   const updatedProduct = new Product(
+    prodId,
     updatedTitle, 
-    updatedPrice,
-    updatedDescript,
     updatedImgURL, 
-    new ObjectId(prodId)) //needs to match product_model.ejs 27-31
-  updatedProduct.save()
-    .then(result => {
-      res.redirect('/admin/products_view')
-    })
-    .catch(err => console.log(err));
+    updatedPrice,
+    updatedDescript)
+    // new ObjectId(prodId)); //needs to match product_model.ejs 27-31
+    // console.log(updatedProduct, "UPDATEDPROJECT, admin_controller.js/96");
+  updatedProduct.save();
+    // .then(result => {
+    //   res.redirect('/admin/products_view')
+    // })
+    // .catch(err => console.log(err));
+    res.redirect("/admin/products_view")
 }
 
 
@@ -111,7 +115,7 @@ exports.getProducts = (req, res, next) => {
 
 
 exports.postDeleteProduct = (req, res, next) => {
-  const prodId = req.body.product._id;
+  const prodId = req.body.product.id;
   console.log(req.body, "REQ.BODY, admin_controller.js/92")
   Product.deleteById(prodId);
   res.redirect('/admin/products_view');

@@ -23,6 +23,7 @@ module.exports = class Cart {
       if (!err) {
         cart = JSON.parse(fileContent);
       }
+      console.log(cart,"cart, cart_model.js/26")
       // console.log(cart,"CART");
       // console.log(cart[0], "CART[0], cart_model.ejs/27")
 

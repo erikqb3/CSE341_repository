@@ -111,7 +111,7 @@ module.exports = class Product {
     this.title = Title;
     this.imgURL = imageURL;
     this.price = Price;
-    this.descipt = Description;
+    this.descript = Description;
   }
 
 

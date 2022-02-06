@@ -1,12 +1,12 @@
 // In-Class TA = Samuel Witt
 const path = require('path');
-const PATH = process.env.PORT || 3000;
+// const PATH = process.env.PORT || 3000;
 const express = require('express');
 const bodyParser = require('body-parser');
 const errorController = require('./controllers/error_controller'); //this is basically getting partials javascript style, 
-const mongoConnect = require('./util/database').mongoConnect;
-const User = require('./models/user_model');
-const mongoose = require('mongoose');
+// const mongoConnect = require('./util/database').mongoConnect;
+// const User = require('./models/user_model');
+// const mongoose = require('mongoose');
 
 
 const app = express();
@@ -21,15 +21,15 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname,'public'))); //pass in a path you want to serve staticlly, get reaccseess to
 // express will take any request that tries to find some file and automatically forwards it to the public folder; in this case
 
-app.use((req, res, next) => {
-  User.findById(1)
-  .then(user=> {
-    req.user = user;
-    next();
-  })
-  .catch(err => console.log(err));
-  next();
-});
+// app.use((req, res, next) => {
+//   User.findById(1)
+//   .then(user=> {
+//     req.user = user;
+//     next();
+//   })
+//   .catch(err => console.log(err));
+//   next();
+// });
 
 
 app.use('/admin', adminRoutes); // filter; only sites with /admin will go down the admin route
@@ -37,12 +37,12 @@ app.use(shopRoutes);
 
 app.use(errorController.get404);
 
-mongoConnect( () => { //KEEP THIS
+// mongoConnect( () => { //KEEP THIS
 
-  app.listen(PATH);
-})
+//   app.listen(PATH);
+// })
 
-// app.listen(3000);
+app.listen(3000);
 
 // //TEAM ACTIVITY STUFF
 // const cors = require('cors') // Place this with other requires (like 'path' and 'express')
