@@ -7,23 +7,22 @@ Please answer the questions in this text file and submit it to I-Learn.
 
 
 2. Copy and paste the URL for your source code repository (e.g., GitHub):
-(https://github.com/erikqb3/CSE341_repository.git)
+(https://github.com/erikqb3/CSE341_repository/tree/main/AcademindVideos/FirstReset/00-starting-setup)
 
 3. Briefly list and describe the elements of the application that are functioning. 
-(* User can navigate to the page of all the nav tabs except the "Cart" tab
-*  Admins are able to add products)
+(* User can load the website
+* user can navigate through some of th pages)
 
 4. Briefly describe any pieces of the assignment that are not yet working correctly.
 (* The only tab that users can't navigate to is the "Cart" tab
 * User cannot delete elements
-* Admins cannot edit elements, but are sent to the home page
+* Users can't see products
 * Users cannot delete products from their carts
-* No orders/no user ids
-* mongodb Compass isn't uploading a "shop" database
+* No orders/no user idsW
 * unable to connect to Heroku)
 
 5. Briefly describe the "coolest" thing you learned while completing this assignment.
-(I've learned more of how to navigate between the modules, controllers, and views! It's actually pretty cool figuring out problems and trailing your way back to the source.)
+(I was able to connect to Mongodb and MongodbCompass! This was after I reset my work and had to download one of the code files provided. Something happened and doesn't work now though)
 
 6. If you could change this assignment to be more effective or helpful, what would you change?
 (I need someone who can walk me through my problems and get me back on track.)
@@ -36,4 +35,4 @@ Please answer the questions in this text file and submit it to I-Learn.
    5 - Shows creativity and excels above and beyond requirements
 (2)
 8. Provide a brief justification (1-2 sentences) for selecting that category.
-(I honestly tried. When I was making progress, I decided to keep going so I wouldn't be totally behind, and got even more stuck; worse than before. I'm trying as hard as I can though. Going to try and try 'smarter' next week.)
+(I got through a lot of the videos and am catching up. I'm not going to skip videos by downloading a more recent updated code. Partly because I want to do better and understand, partly because I might miss a downloading step and would be stuck with no idea.S)
