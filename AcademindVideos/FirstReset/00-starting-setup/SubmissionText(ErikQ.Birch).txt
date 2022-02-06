@@ -11,6 +11,7 @@ Please answer the questions in this text file and submit it to I-Learn.
 
 3. Briefly list and describe the elements of the application that are functioning. 
 (* User can load the website
+* new css looks nice (had to make changes after I resetted)
 * user can navigate through some of th pages)
 
 4. Briefly describe any pieces of the assignment that are not yet working correctly.
