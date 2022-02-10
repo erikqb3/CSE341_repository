@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const productSchema = new Schema ({
+const productSchema = new Schema({
   title: {
     type: String,
     required: true
@@ -11,7 +11,7 @@ const productSchema = new Schema ({
     type: Number,
     required: true
   },
-  description : {
+  description: {
     type: String,
     required: true
   },
